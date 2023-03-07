@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='fbird.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div id="gamearea">
+        <div id="toppipe"></div>
+        <div id="bird" class="bird-animate"></div>
+        <div id="bottompipe"></div>
+    </div>
+
+
+    <script>
+        const bird=document.getElementById("bird");
+        const toppipe=document.getElementById("toppipe");
+        const bottompipe=document.getElementById("bottompipe");
+
+        //var frames=window.getComputedStyle("bird").
+
+
+
+        setInterval(function Gravity(){
+           var x =parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
+           window.getComputedStyle(bird).setProperty("bottom:","10px;");
+        },10)
+    </script>
+
+
+</body>
+</html>

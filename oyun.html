@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html onclick="zipla()">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>T-rex Running</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='oyun.css'>
+</head>
+<body>
+    <div id="oyun">
+        <div id="trex"></div>
+        <div id="kaktus"></div>
+    </div>
+
+    <script>
+        const trex=document.getElementById("trex");
+        const kaktus=document.getElementById("kaktus");
+
+        function zipla(){
+            if (kaktus.classList!="kaktus-animate") {
+                kaktus.classList.add("kaktus-animate")
+            }
+            if (trex.classList!="trex-animate") {
+                trex.classList.add("trex-animate");
+                setTimeout(function(){
+                    trex.classList.remove("trex-animate");
+                }, 500);
+            }
+        }
+
+        var carpisma=setInterval(function(){
+            var trexbottom= parseInt(window.getComputedStyle(trex)
+            .getPropertyValue("bottom"));
+            var kaktusleft= parseInt(window.getComputedStyle(kaktus)
+            .getPropertyValue("left"));
+
+            if (kaktusleft>0 && kaktusleft<20 && trexbottom<40) {
+                kaktus.classList.remove("kaktus-animate");
+                alert("oyun bitti");
+            }
+
+
+        },10)
+    </script>
+</body>
+</html>

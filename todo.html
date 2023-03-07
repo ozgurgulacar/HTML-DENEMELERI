@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body{
+            background-color: rgb(244, 116, 116);
+        }
+        h1{
+            margin-left: 40%;
+        }
+        input[type="text"]{
+            width:250px;
+            height: 25px;
+            padding: 1%;
+            
+        }
+        .snme{
+            padding-left: 30%;
+            padding-top: 50px;
+            
+        }
+        .snme input{
+            margin-left: 10px;
+        }
+        .desc{
+            padding-left: 32.5%;
+            
+        }
+        .desc textarea{
+            margin-left: 10px;
+        }
+        textarea{
+            width:250px;
+            height: 75px;
+            padding: 1%;
+        }
+        .ekle{
+            margin-left: 45%;
+            width: 100px;
+            height: 50px;
+            padding: 1%;
+            background-color: green;
+            color: aliceblue;
+        }
+        .btns{
+            display:inline;
+            float: left;
+        }
+        .snm{
+            margin-left: 35%;
+            width: 250px;
+            height: 35px;
+            margin-right: 0px;
+            background-color: aqua;
+            color: black;
+        }
+        .remove{
+            height: 35px;
+            background-color: red;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do Application</h1>
+    
+    <div>
+        <form >
+            <p class="snme">
+            Görevinize Kısa İsim Verin <input type="text" id="sname" value="">
+            </p>
+            <p class="desc">
+            <strong>Görevinizi açıklayın</strong>
+            <textarea  value="descr" name="desc" id="descr" cols="30" rows="10"></textarea>
+            </p>
+            <p>
+                <input class="ekle" type="button" value="Ekle" name="" id="btn">
+            </p>
+        </form>
+    </div>
+    <div id="container">
+        
+    </div>
+
+    <script>
+        var sname="";
+        var description="";
+        var btn = document.getElementById("btn");
+        var btntodo=document.getElementById("todo");
+        var btnrmv=document.getElementById("rmv");
+        var form=document.getElementById("container");
+        
+        
+        var numara=localStorage.length/2;
+        //Local Storageye Yeni bir kayıt ekleme
+        btn.addEventListener("click",function(){
+            
+            sname=document.getElementById("sname").value;
+            description=document.getElementById("descr").value;
+            localStorage.setItem("sortname"+numara,sname);
+            localStorage.setItem("description"+numara,description);
+            numara++;
+            listuptade();
+            document.getElementById("sname").value="";
+            document.getElementById("descr").value="";
+        });
+
+        //Tıklanan Görevin açıklamasını ekrana yazdırma
+        
+
+
+
+
+
+        //Tüm Listeyi Ekrana yazdırma
+        function listuptade(){
+            var ekle=document.getElementById("container");
+            ekle.innerHTML="";
+            
+            for(var i=0;i<numara;i++){
+                sname=localStorage.getItem("sortname"+i);
+                ekle.innerHTML+='<div class="content"><input id="todo'+i+'" class="btns snm" type="button" value="'+sname+'"><input id="rmv'+i+'" class="btns remove" type="button" value="X"></div>';
+                
+            }
+            
+        }
+
+        listuptade();
+
+
+        
+        form.addEventListener("click",function(e){
+            var key=e.target["id"][4];
+            if(key==undefined){
+                key=e.target["id"][3];
+                parseInt(key);
+                for(var i =key;i<numara;i++){
+                    var x=0;
+                    x=parseInt(i)+1;
+                    
+                    
+                    localStorage.setItem("sortname"+i,localStorage.getItem("sortname"+x));
+                    localStorage.setItem("description"+i,localStorage.getItem("description"+x));
+                    
+                    
+                }
+                x=+parseInt(numara)-1;
+                numara=numara-1;
+                localStorage.removeItem("sortname"+x);
+                localStorage.removeItem("description"+x);
+                console.log("sortname"+x);
+                listuptade();
+            }
+            else{
+                window.alert(localStorage.getItem("description"+key));
+            }
+        });
+    </script>
+</body>
+</html>

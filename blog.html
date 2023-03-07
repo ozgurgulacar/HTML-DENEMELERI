@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' type='text/css' media='screen' href='anacss.css'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>MyBlog</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Algoritma Analizi</h1>
+    </div>
+    <div class="contents">
+        
+        
+    </div>
+    <div class="yan">
+        <p>
+            Özgür Gülaçar
+            <br><br>
+            Erzincan Binali Yıldırım Üniversitesi
+            <br><br>
+            Bilgisayar Mühendisliği
+            <br><br>
+            Uygulamalar
+            <hr><br>
+            <a href="todo.html">To Do App</a>
+            <hr><hr><br>
+            <a href="birdgame.html">Flappy Bird Game</a>
+            <hr>
+            <a href="oyun.html">T-rex Running</a>
+            <hr><br><br>
+            <h3>
+                Son Eklenenler
+                <hr>
+            </h3>
+            <br>
+            
+        </p>
+    </div>
+    <script>
+        //Liste Değişkeni ile Anasayfada Görülecek Başlıkları Dinamik olarak Hazırladık 
+        var liste=[
+            {head:"Selection SORT",
+             summary:"Bu yazımızda sıralama algoritmalarından biri olan Selection Sort algoritmasından bahsedecez. Zaman karmaşıklığından dolayı pek tercih edilmese de en kolay sıralama algoritmalarından biridir.",
+             img:"images/selection.jpg",
+             ahref:"selection.html"},
+             
+             {head:"Bubble SORT",
+             summary:"Bu yazımızda sıralama algoritmalarından biri olan Selection Sort algoritmasından bahsedecez. Zaman karmaşıklığından dolayı pek tercih edilmese de en kolay sıralama algoritmalarından biridir.",
+             img:"images/bubble.jpg",
+             ahref:"bubble.html"},
+
+             {head:"İnsertion SORT",
+             summary:"Bu yazımızda sıralama algoritmalarından biri olan Selection Sort algoritmasından bahsedecez. Zaman karmaşıklığından dolayı pek tercih edilmese de en kolay sıralama algoritmalarından biridir.",
+             img:"images/insertion.png",
+             ahref:"insertion.html"},
+        ];
+
+        var icerik="";
+        var soneklenen="";
+
+        //Foreach ile sayfamıza eklenebilir bir Html kodu yaptık
+        liste.forEach(function(item){
+        icerik +='<a class="sorts" href="'+item.ahref+'" target="_blank">'
+            +'<div class="content">'
+            +"<h3>"+item.head +"</h3>"
+            +"<img src='"+item.img +"' alt='images'>"
+            +"<p class='firstp'>"+item.summary
+            +"</p> </div> </a>";
+            soneklenen+='<a href="'+item.ahref+'" target="_blank">'+item.head+'</a> <br><hr><br>'; 
+        });
+
+        //Bu kodu İnner Html metodu ile Sayfamızın Contents classı altına (Ana sayfa içerikleri) taşıdık
+        document.getElementsByClassName("contents")[0].innerHTML=icerik;
+
+        //Bu kodu İnner Html metodu ile Sayfamızın yan (Son Eklenenler) classı altına taşıdık
+        document.getElementsByClassName("yan")[0].innerHTML+=soneklenen;
+
+    </script>
+</body>
+</html>

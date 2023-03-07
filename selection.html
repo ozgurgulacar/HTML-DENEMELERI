@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Selection Sort</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='sortspage.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+
+    <h1>Seleciton Sort</h1>
+
+    <div class="icerik">
+        
+            <img src="images/selection.jpg" alt="bubble">
+            <p>
+                Bugün sıralama algoritmalarından biri olan selection sort algoritmasından bahsedecem.
+            </p>
+            Sıralanmak istenen verimiz: 5,7,2,9,6,1,3,7     olsun
+            </p><p>
+            Bu verilerin bir oluşumun(composition) belirleyici alanları olduğunu düşünebiliriz. Yani örneğin vatandaşlık numarası veya öğrenci numarası gibi. Dolayısıyla örneğin öğrencilerin numaralarına göre sıralanması durumunda kullanılabilir.
+            </p><p>
+            Seçerek sıralamanın çalışması yukarıdaki bu örnek dizi üzerinde adım adım gösterilmiştir.
+            </p><p>
+            0. adım: başlangıç adımı i=0 olarak ata.
+            </p><p>
+            1. adım: dizideki i. sırasından sonraki en küçük sayının yerini bul. Bu dizideki en küçük sayı 1’dir ve 5. sıradadır.
+            </p><p>
+            2. adım dizinin i. sırasındaki sayıyı bu en küçük sayı ile yer değiştir: 1,7,2,9,6,5,3,7
+            </p><p>
+            3. adım : i’yi bir arttır ve 1. adıma git.
+            </p><p>
+            Dolayısıyla 3. adımdan sonra i=1 olacak ve sonra ilk sayı olan 1 atlanaraka kalan sayılar olan 7,2,9,6,5,3,7 sayıları arasından en küçük sayı bulunur. Bu sayı 2’dir ve sırası da 2dir. sıradaki sayı olan yerdeki sayı ile yer değiştirir ve sonuç : 1,2,7,9,6,5,3,7 olarak bulunur.
+            </p><p>
+            Artık i değeri 2dir ve bu sayıdan itibaren en küçük sayı 7,9,6,5,3,7 arasında aranır. bulunan 3’ün sırası 6’dır. Bu sayı da sıradaki yerini alır ve sonuç : 1,2,3,9,6,5,7,7 olur. Bu işlem böylece devam eder ve dizinin değişimi aşağıda gösterilmiştir:
+            1,2,3,5,9,6,7,7
+            </p><p>
+            1,2,3,5,6,9,7,7
+            </p><p>
+            1,2,3,5,6,7,9,7
+            </p><p>
+            1,2,3,5,6,7,7,9
+            </p><p>
+            olarak bulunur.
+            <hr><hr>
+            <form>
+                <p>
+                    <input type="text" id="fname" value="">
+                    İsim
+                </p>
+                <p>
+                    <input type="email" id="mail" value="">
+                    Email
+                </p>
+                <p>
+                    Mesajınız
+                </p>
+                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="Mesajınızı Giriniz"></textarea>
+                <p>
+                    <input type="button" value="Mesajı Gönder" id="gonder" name="gonder">
+                </p>
+                
+            </form>
+        
+        <div id="yorumlar">
+                
+        </div>
+    
+    
+    </div>
+
+
+    <script>
+        
+        var btn = document.getElementById("gonder");
+        var isim="";
+        var email="";
+        var msg="";
+        var tarih=new Date();        
+        //Butona tıklandığında Değerleri aldık
+        btn.addEventListener("click",function(){
+            isim=document.getElementById("fname").value;
+            email=document.getElementById("mail").value;
+            msg = document.getElementById("comment").value;
+            //yorumu ekliyoruz
+            var icerik = document.getElementById("yorumlar");
+            icerik.innerHTML+="<hr><h4>"+isim+"</h4><h6>"+tarih+"</h6><p>"+msg+"</p>";
+        });
+        
+        
+    </script>
+</body>
+</html>
